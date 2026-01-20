@@ -1,5 +1,5 @@
 <template>
-  <Teleport to="body">
+  <Teleport  v-if="imageUrl"  to="body">
     <Transition name="modal">
       <div v-if="show" class="fixed inset-0 z-[10000] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm" @click.self="$emit('close')">
         <div class="w-full max-w-md bg-surface-light dark:bg-surface-dark rounded-2xl shadow-xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col">
@@ -17,28 +17,10 @@
           <!-- Content -->
           <div class="flex-1 p-6 flex flex-col overflow-y-auto">
             <!-- Upload Section (if no image selected) -->
-            <div v-if="!imageUrl" class="flex-1 flex flex-col items-center justify-center">
-              <div 
-                class="w-48 h-48 rounded-full border-2 border-dashed border-slate-300 dark:border-slate-600 flex flex-col items-center justify-center mb-6 cursor-pointer hover:border-primary hover:bg-primary/5 transition-all group"
-                @click="triggerFileInput"
-              >
-                <span class="material-symbols-outlined text-slate-400 group-hover:text-primary text-5xl mb-3">photo_camera</span>
-                <span class="text-sm text-slate-500 dark:text-slate-400 group-hover:text-primary font-medium">点击上传头像</span>
-              </div>
-              <input
-                ref="fileInputRef"
-                type="file"
-                accept="image/jpeg,image/png,image/gif,image/webp"
-                class="hidden"
-                @change="handleFileSelect"
-              />
-              <p class="text-xs text-slate-500 dark:text-slate-400 text-center">
-                支持 JPEG、PNG、GIF、WebP，最大 5MB
-              </p>
-            </div>
+            
 
             <!-- Cropper Section (if image selected) -->
-            <div v-else class="flex-1 flex flex-col">
+            <div class="flex-1 flex flex-col">
               <!-- Cropper -->
               <div class="w-full max-w-xs mx-auto rounded-full overflow-hidden border-4 border-slate-200 dark:border-slate-700 shadow-lg mb-4" style="width: 300px; height: 300px; position: relative;">
                 <VuePictureCropper
@@ -65,6 +47,9 @@
                     toggleDragModeOnDblclick: false
                   }"
                   @ready="onCropperReady"
+                @crop="updatePreview"
+                @cropmove="updatePreview"
+                @zoom="updatePreview"
                 />
               </div>
 
@@ -170,9 +155,16 @@ import { compressImage, shouldCompress } from '@/composables/useImageCompress'
 
 interface Props {
   show: boolean
+  // 当弹窗显示时自动打开文件选择器
+  autoOpenOnShow?: boolean
+  // 外部直接传入的文件，用于无需弹窗内再次选择
+  externalFile?: File | null
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), {
+  autoOpenOnShow: false,
+  externalFile: null
+})
 
 const emit = defineEmits<{
   close: []
@@ -191,13 +183,8 @@ const triggerFileInput = () => {
   fileInputRef.value?.click()
 }
 
-// 处理文件选择
-const handleFileSelect = async (event: Event) => {
-  const target = event.target as HTMLInputElement
-  const file = target.files?.[0]
-  
-  if (!file) return
-
+// 统一处理文件
+const processFile = async (file: File) => {
   // 验证文件类型
   const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp']
   if (!allowedTypes.includes(file.type)) {
@@ -259,6 +246,14 @@ const handleFileSelect = async (event: Event) => {
     imageUrl.value = ''
     cropperReady.value = false
   }
+}
+
+// 处理文件选择（来自弹窗内部 input）
+const handleFileSelect = async (event: Event) => {
+  const target = event.target as HTMLInputElement
+  const file = target.files?.[0]
+  if (!file) return
+  await processFile(file)
 }
 
 // 重新选择图片
@@ -434,6 +429,13 @@ watch(() => props.show, (newVal) => {
     if (fileInputRef.value) {
       fileInputRef.value.value = ''
     }
+
+    // 显示时如果需要自动打开文件选择器
+    if (props.autoOpenOnShow) {
+      nextTick().then(() => {
+        triggerFileInput()
+      })
+    }
   } else {
     // 关闭时清理预览 URL
     if (previewUrl.value && previewUrl.value.startsWith('blob:')) {
@@ -444,6 +446,13 @@ watch(() => props.show, (newVal) => {
       URL.revokeObjectURL(imageUrl.value)
       imageUrl.value = ''
     }
+  }
+})
+
+// 监听外部传入的文件，直接处理
+watch(() => props.externalFile, (file) => {
+  if (file) {
+    processFile(file)
   }
 })
 </script>

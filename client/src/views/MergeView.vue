@@ -7,7 +7,7 @@
           <div class="flex items-center gap-4">
             <router-link
               to="/friends"
-              class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400"
+              class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-slate-600 dark:text-slate-400 pb-1"
             >
               <span class="material-symbols-outlined">arrow_back</span>
             </router-link>
