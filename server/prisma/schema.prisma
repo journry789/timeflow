@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           BigInt    @id @default(autoincrement()) @db.BigInt
+  email        String    @unique @db.VarChar(255)
+  passwordHash String    @map("password_hash") @db.VarChar(255)
+  username     String    @unique @db.VarChar(50)
+  displayName  String?   @map("display_name") @db.VarChar(100)
+  avatarUrl    String?   @map("avatar_url") @db.Text
+  color        String    @default("#2563EB") @db.Char(7)
+  createdAt    DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt    DateTime  @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  events       Event[]
+  sentFriendships     Friendship[] @relation("UserSentFriendships")
+  receivedFriendships Friendship[] @relation("UserReceivedFriendships")
+
+  @@map("users")
+}
+
+model Event {
+  id        BigInt   @id @default(autoincrement()) @db.BigInt
+  userId    BigInt   @map("user_id") @db.BigInt
+  eventDate DateTime @map("event_date") @db.Timestamptz(6)
+  title     String   @db.VarChar(120)
+  content   String   @db.Text
+  imageUrl  String?  @map("image_url") @db.Text
+  eventType String   @default("record") @map("event_type") @db.VarChar(20) // plan, record
+  mood      String?  @map("mood") @db.VarChar(20) // happy, calm, sad, excited, tired
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, eventDate(sort: Desc)])
+  @@map("events")
+}
+
+model Friendship {
+  id          BigInt    @id @default(autoincrement()) @db.BigInt
+  userId      BigInt    @map("user_id") @db.BigInt
+  friendId    BigInt    @map("friend_id") @db.BigInt
+  status      String    @default("pending") @db.VarChar(20) // pending, accepted, rejected, blocked
+  requestedAt DateTime  @default(now()) @map("requested_at") @db.Timestamptz(6)
+  updatedAt   DateTime  @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  user   User @relation("UserSentFriendships", fields: [userId], references: [id], onDelete: Cascade)
+  friend User @relation("UserReceivedFriendships", fields: [friendId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([friendId])
+  @@map("friendships")
+}

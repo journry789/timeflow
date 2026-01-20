@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>新建事件 - Create New Event</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "primary-hover": "#1d4ed8",
+                        "background-light": "#f8fafc", // Cool gray for light mode
+                        "background-dark": "#0f172a", // Slate 900 for dark mode
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1e293b", // Slate 800 for card bg
+                        "text-primary-dark": "#f1f5f9",
+                        "text-secondary-dark": "#94a3b8",
+                        "border-dark": "#334155",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"],
+                        "body": ["Plus Jakarta Sans", "Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for better aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #475569;
+            border-radius: 20px;
+        }
+        .form-checkbox:checked {
+            background-color: #2463eb;
+            border-color: #2463eb;
+        }
+        /* Smooth transitions */
+        .transition-all-custom {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-text-primary-dark font-display antialiased min-h-screen flex flex-col items-center py-10 overflow-y-auto">
+<!-- Main Container -->
+<main class="w-full max-w-[720px] px-4 flex-1 flex flex-col justify-center">
+<!-- Header Section -->
+<header class="mb-8 text-center relative">
+<h1 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">新建事件</h1>
+<p class="text-slate-500 dark:text-text-secondary-dark mt-2 text-sm">记录这一刻，让时间留下印记</p>
+<button class="absolute right-0 top-1 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300">
+<span class="material-symbols-outlined">close</span>
+</button>
+</header>
+<!-- Form Card -->
+<form class="bg-surface-light dark:bg-surface-dark rounded-2xl shadow-xl border border-slate-200 dark:border-border-dark overflow-hidden flex flex-col relative">
+<!-- Type Selector (Segmented Control) -->
+<div class="px-8 pt-8 pb-2">
+<div class="flex p-1 bg-slate-100 dark:bg-slate-900 rounded-lg w-max mx-auto sm:mx-0">
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="eventType" type="radio" value="plan"/>
+<div class="px-6 py-2 rounded-md text-sm font-medium text-slate-500 dark:text-slate-400 peer-checked:bg-white dark:peer-checked:bg-slate-700 peer-checked:text-primary peer-checked:shadow-sm transition-all-custom flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+<span>计划</span>
+</div>
+</label>
+<label class="cursor-pointer relative">
+<input checked="" class="peer sr-only" name="eventType" type="radio" value="record"/>
+<div class="px-6 py-2 rounded-md text-sm font-medium text-slate-500 dark:text-slate-400 peer-checked:bg-white dark:peer-checked:bg-slate-700 peer-checked:text-primary peer-checked:shadow-sm transition-all-custom flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">history_edu</span>
+<span>记录</span>
+</div>
+</label>
+</div>
+</div>
+<div class="px-8 py-4 flex flex-col gap-6">
+<!-- Title Input -->
+<div class="group">
+<label class="sr-only" for="title">标题</label>
+<input class="w-full bg-transparent border-0 border-b-2 border-slate-200 dark:border-slate-700 px-0 py-3 text-2xl font-bold placeholder:text-slate-400 dark:placeholder:text-slate-600 focus:ring-0 focus:border-primary transition-colors dark:text-white" id="title" placeholder="输入标题..." type="text"/>
+</div>
+<!-- Mood Selector -->
+<div>
+<label class="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-3 block uppercase tracking-wider text-xs">此刻心情</label>
+<div class="flex gap-4 flex-wrap">
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="mood" type="radio" value="happy"/>
+<div class="w-12 h-12 rounded-full flex items-center justify-center bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-400 peer-checked:bg-primary/10 peer-checked:border-primary peer-checked:text-primary hover:border-primary/50 transition-all-custom">
+<span class="material-symbols-outlined text-[28px]">sentiment_very_satisfied</span>
+</div>
+</label>
+<label class="cursor-pointer group">
+<input checked="" class="peer sr-only" name="mood" type="radio" value="calm"/>
+<div class="w-12 h-12 rounded-full flex items-center justify-center bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-400 peer-checked:bg-primary/10 peer-checked:border-primary peer-checked:text-primary hover:border-primary/50 transition-all-custom">
+<span class="material-symbols-outlined text-[28px]">sentiment_satisfied</span>
+</div>
+</label>
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="mood" type="radio" value="sad"/>
+<div class="w-12 h-12 rounded-full flex items-center justify-center bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-400 peer-checked:bg-primary/10 peer-checked:border-primary peer-checked:text-primary hover:border-primary/50 transition-all-custom">
+<span class="material-symbols-outlined text-[28px]">sentiment_dissatisfied</span>
+</div>
+</label>
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="mood" type="radio" value="excited"/>
+<div class="w-12 h-12 rounded-full flex items-center justify-center bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-400 peer-checked:bg-primary/10 peer-checked:border-primary peer-checked:text-primary hover:border-primary/50 transition-all-custom">
+<span class="material-symbols-outlined text-[28px]">rocket_launch</span>
+</div>
+</label>
+<label class="cursor-pointer group">
+<input class="peer sr-only" name="mood" type="radio" value="tired"/>
+<div class="w-12 h-12 rounded-full flex items-center justify-center bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-400 peer-checked:bg-primary/10 peer-checked:border-primary peer-checked:text-primary hover:border-primary/50 transition-all-custom">
+<span class="material-symbols-outlined text-[28px]">bedtime</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Date & Time Pickers -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="flex flex-col gap-2">
+<label class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">日期</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary">event</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3 rounded-xl border border-slate-200 dark:border-border-dark bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all-custom" type="date" value="2023-10-27"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">时间</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary">schedule</span>
+</div>
+<input class="block w-full pl-10 pr-3 py-3 rounded-xl border border-slate-200 dark:border-border-dark bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all-custom" type="time" value="14:30"/>
+</div>
+</div>
+</div>
+<!-- Content Editor -->
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-center mb-1">
+<label class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">内容</label>
+<!-- Simple Toolbar -->
+<div class="flex gap-1">
+<button class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400 hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">format_bold</span>
+</button>
+<button class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400 hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">format_italic</span>
+</button>
+<button class="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-400 hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">link</span>
+</button>
+</div>
+</div>
+<textarea class="block w-full p-4 rounded-xl border border-slate-200 dark:border-border-dark bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary resize-none transition-all-custom" placeholder="写下你的想法..." rows="5"></textarea>
+</div>
+<!-- Image Uploader -->
+<div>
+<label class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 block">图片 / 附件</label>
+<div class="flex gap-4 overflow-x-auto pb-2">
+<!-- Add Button -->
+<div class="flex-shrink-0 w-24 h-24 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-600 flex flex-col items-center justify-center cursor-pointer hover:border-primary hover:bg-primary/5 transition-all-custom group">
+<span class="material-symbols-outlined text-slate-400 group-hover:text-primary text-2xl mb-1">add_photo_alternate</span>
+<span class="text-[10px] text-slate-400 group-hover:text-primary font-medium">添加图片</span>
+</div>
+<!-- Uploaded Preview 1 -->
+<div class="flex-shrink-0 w-24 h-24 rounded-xl relative group overflow-hidden border border-slate-200 dark:border-slate-700">
+<img alt="Abstract geometric patterns in cool blue tones representing modern design" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ2QmqC4F_ix6wxTNwN2EzOuts_z_WRD7GV0BmvMdHKYfMOyTp7UYMbhXZpAO-5QJW8uTyThRX1T7dfQfVatGOtWLXHhJQBFTPIWxPoWXwk1BhKUPYCdO4BIrlWZMkZeH__fdmQgHTWz7y2bs8apEycOX3WWrvYTtq5iGhayphuIs8crsccRN-f1c3YujutKZEAxzy34lCPfSQBeQK1rhCe5Y212QXht0OGexs1zACpRtXdJ2OLZE_M0hZAYNUH_ElJLWrsWNwRA"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="text-white bg-red-500 rounded-full p-1 hover:bg-red-600 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+<!-- Uploaded Preview 2 -->
+<div class="flex-shrink-0 w-24 h-24 rounded-xl relative group overflow-hidden border border-slate-200 dark:border-slate-700">
+<img alt="Serene landscape of misty mountains at twilight" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzqp5ZRSQW_j880yKU5hB2nN_nWJ7vFeE_IYVadPXH6ETtVOJM-PEOyO-13I81LWxxSAz4xgOra4Hzt_55d_mQIRN3r-NOmVH-VkV75VrcL8BOXoeJ8rrCmTsUB-nqa-hm7zWZv7IIsACZab0VNxTsF-oPskcNc6SlmdV_E9mKEp7w9oSc8qECjLWy4y9mxE93nDeaGeb0AoNpLQenuL42NP3g7jxwps64jXrY2b85Bf_2nSGq6EDlbR3Kx4JA2Q6wwZsOxGJdvQ"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<button class="text-white bg-red-500 rounded-full p-1 hover:bg-red-600 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">close</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer / Actions -->
+<div class="px-8 py-6 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-border-dark flex justify-end gap-4">
+<button class="px-6 py-2.5 rounded-lg border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:ring-2 focus:ring-offset-2 focus:ring-slate-400 dark:focus:ring-offset-slate-900" type="button">
+                    取消
+                </button>
+<button class="px-8 py-2.5 rounded-lg bg-primary text-white font-medium hover:bg-primary-hover shadow-lg shadow-primary/30 transition-all-custom focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-offset-slate-900 flex items-center gap-2" type="submit">
+<span class="material-symbols-outlined text-[18px]">check</span>
+                    保存
+                </button>
+</div>
+</form>
+</main>
+</body></html>

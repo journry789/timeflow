@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>时间线合并视图UI (暗黑模式)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;family=Noto+Sans+SC:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+        :root {--primary-blue: #3B82F6;--primary-blue-brand: #2563EB;--friend-pink: #E879F9;--friend-pink-brand: #D946EF;
+            --bg-dark: #111827;--card-dark: #1F2937;}
+        body {
+            font-family: 'Roboto', 'Noto Sans SC', sans-serif;
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background-color: #374151;transform: translateX(-50%);
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="bg-[#111827] text-gray-100 min-h-screen selection:bg-blue-500 selection:text-white">
+<header class="sticky top-0 z-50 bg-[#111827]/85 backdrop-blur-md border-b border-gray-800 shadow-lg">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<div class="flex items-center space-x-4">
+<button class="p-2 rounded-full hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-gray-400">arrow_back</span>
+</button>
+<div>
+<h1 class="text-lg font-bold text-white tracking-wide">与 林希 的合并时间线</h1>
+<p class="text-xs text-gray-400">共记录 128 个瞬间</p>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<div class="flex items-center space-x-2">
+<div class="relative">
+<img alt="Friend" class="w-8 h-8 rounded-full border-2 border-[var(--friend-pink-brand)] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl_XkKEm5yfy4_e2XxHKSS0lgOFa7YW5PmfaarufuHSbFN2wTI1iDfTzd7gBr3vNsSMsGjSoGCZGrk02qHH4IxulZ-l0TcQ3Ugt3Umcg0ik71GiMf8EHYrAgGZ8SmuYjPna-EaneXhRiMlNHZ1VauanbVl7fFIK6xFy61lBA6FQRkPP51fTWva92eg8ySpSKwQ7iK78UNoMql813hWecWG9UB6_FCPToOLgTeZhWDI68rkP1fC6TQDasQPpQvA0kLeg-YXhvqfFQ"/>
+<span class="absolute -bottom-1 -right-1 w-3 h-3 bg-[var(--friend-pink-brand)] rounded-full border-2 border-[#111827]"></span>
+</div>
+<span class="text-sm font-medium text-gray-200">林希</span>
+</div>
+<div class="h-4 w-[1px] bg-gray-700"></div>
+<div class="flex items-center space-x-2">
+<div class="relative">
+<img alt="Me" class="w-8 h-8 rounded-full border-2 border-[var(--primary-blue-brand)] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE605eGTLrb_LXk-WLmebbhXJquOE-DnBAX7ZIcGvblmBBUilyBXSq0eataSF0zTKOOeRtz9tFvlwz635Z3yiJxUjxcT0DFnv_sNCZ6fW_0fJGby13Gp0YM5dI3gHZZzol1eBX_bQiyT6zDqwgfVISSRIM92lSJd3x_m3IPwGNbzhvXZmCNWuoD-VOvRvmG5L3-RnnLtB4ryq_GLyOmwf8TitGXWbtXdsHZYAumBYV3jVh4cyRVi33uA0sa8nioVffbynNxDoprg"/>
+<span class="absolute -bottom-1 -right-1 w-3 h-3 bg-[var(--primary-blue-brand)] rounded-full border-2 border-[#111827]"></span>
+</div>
+<span class="text-sm font-medium text-gray-200">我</span>
+</div>
+<button class="p-2 rounded-full hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-gray-400">more_vert</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative timeline-line">
+<div class="relative z-10 flex justify-center mb-10">
+<span class="px-4 py-1.5 bg-gray-800 text-gray-300 text-sm font-medium rounded-full shadow-md border border-gray-700">
+            2023年 10月
+        </span>
+</div>
+<div class="relative z-10 grid grid-cols-2 gap-8 mb-12 group">
+<div class="col-span-1 flex flex-col items-end text-right pr-8 relative">
+<div class="absolute right-[-21px] top-6 w-3 h-3 bg-[var(--friend-pink-brand)] rounded-full border-2 border-[#111827] shadow-[0_0_10px_rgba(217,70,239,0.5)] z-20 group-hover:scale-125 transition-transform duration-200"></div>
+<div class="w-full max-w-md bg-[#1F2937] rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-700">
+<div class="p-5">
+<div class="flex items-center justify-end mb-3 space-x-2 flex-row-reverse space-x-reverse">
+<img alt="Avatar" class="w-6 h-6 rounded-full border border-[var(--friend-pink)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHDNQpCXRxbtlO3s2601S9ZcQRmKGkpzitdypI1Dn6DHdkgF_Ld5BALkyGpByKqg_k29cPj-VRkHq0Rd2J4zWfl6BPaP9cSTg8CMD1ELk9bPkfCE1dyLov9xrgmWC1DAYGdXM-wE5q6yB6B18fIvSY-ISC0YFzaKM-SzCfpLHynAgeyOPExkz1itXjuYUQlEnQytqyHJ2SlBiPWwtP3Rv_s38ZL4ZetNAFUvtPhiX30Ugb8jlM1T-9czL1174CxGQyM6uablDTJg"/>
+<span class="text-xs font-semibold text-[var(--friend-pink)] uppercase tracking-wider">10月24日 • 下午 14:30</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2 leading-tight">秋日的第一次野餐</h3>
+<p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        公园里的枫叶红得正好，带了自制的三明治和热咖啡。阳光洒在草地上，感觉整个世界都慢了下来。🍂☕️
+                    </p>
+<div class="grid grid-cols-2 gap-2 rounded-xl overflow-hidden">
+<img alt="Picnic 1" class="w-full h-32 object-cover hover:scale-105 transition-transform duration-500 opacity-90 hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCut93WYS3Sw5Vv55IWj3iDFwAkHT8IeLv1kzrj3lw57hiF4-reh_RzkQyxGgODUQQYd-mY2M25u5dwFUeMTJwFqClxCk1n3CiYfn3wQNxga6vpVvMfIK7zAJZWA6jxPkwTz4Zqj1kVHFtnts_Wp46vC_8HbdQzDzRqULebzzYEBqCMEbGvXUEUpbyt1O9BaW0OARhSaABZ0zXuYtYqol2EHuwlmE4pe2VUsDllOWA9UAAcOr3Fp1bSt4iAQ53HhtWt34tQr0Hq7g"/>
+<img alt="Picnic 2" class="w-full h-32 object-cover hover:scale-105 transition-transform duration-500 opacity-90 hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4u-2T6Dkf-BuonSx0VGMBV0yRetFg4AJEbxw_gUFqTbPKWEXgYkReRfOz45HHrYm-ZgA75UYXcMUcxXzTESIdlCwiuG3hQCV-9WGJTzjPOLNIOzLc7ykoR6cAUArj05GtYbIsQqyEkVVniM2CZXZsQKDuQ9q6DxYpAkBJalRqnL10MCev8AqK5L6K4TSlIBFBp5GhOCcaERlk-Ala4D8ScS23fzULERa-KCGnN1XJUqFlmyWRWGpQjD1lDhN06WysAc_Q-hr19Q"/>
+</div>
+</div>
+<div class="px-5 py-3 bg-[#111827]/50 border-t border-gray-700 flex justify-end space-x-4">
+<button class="flex items-center space-x-1 text-gray-500 hover:text-[var(--friend-pink)] transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span class="text-xs">24</span>
+</button>
+<button class="flex items-center space-x-1 text-gray-500 hover:text-gray-300 transition-colors">
+<span class="material-symbols-outlined text-[18px]">chat_bubble</span>
+<span class="text-xs">3</span>
+</button>
+</div>
+</div>
+</div>
+<div class="col-span-1"></div>
+</div>
+<div class="relative z-10 grid grid-cols-2 gap-8 mb-12 group">
+<div class="col-span-1"></div>
+<div class="col-span-1 flex flex-col items-start pl-8 relative">
+<div class="absolute left-[-21px] top-6 w-3 h-3 bg-[var(--primary-blue-brand)] rounded-full border-2 border-[#111827] shadow-[0_0_10px_rgba(37,99,235,0.5)] z-20 group-hover:scale-125 transition-transform duration-200"></div>
+<div class="w-full max-w-md bg-[#1F2937] rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-700">
+<div class="p-5">
+<div class="flex items-center justify-between mb-3">
+<span class="text-xs font-semibold text-[var(--primary-blue)] uppercase tracking-wider">10月24日 • 晚上 19:45</span>
+</div>
+<h3 class="text-xl font-bold text-white mb-2 leading-tight">在工作室加班的夜晚</h3>
+<p class="text-gray-400 text-sm leading-relaxed mb-4">
+                        终于完成了这个项目的最后一版设计稿。虽然很累，但是看到成果非常有成就感。窗外的城市灯光很美。
+                    </p>
+<div class="rounded-xl overflow-hidden mb-2">
+<img alt="Office" class="w-full h-48 object-cover hover:scale-105 transition-transform duration-500 opacity-90 hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKv6c3MzRDm2C0jZC2UFm3eZUoKh1SH7--SeVJolYrjJpEEshmLX5e7Roil8zUL41wul7sOgamZWVVjZCse71H8NeMIPQ5GyS18hGykQ7wdylHAVK7_IrDbdrBgvtff_2I42bl6vivsk0zn2KOAs3LmrG5iESNPzVHjtCGEhi1RXj1m3yKhA17-y2McvDnAhYo8gFs1XfX2Ohhcv-3HJnBi1SKYk6fu9Rfxywit_WjCsiat-8ipNqGLguyjxkN7x5PWEs-Atuprw"/>
+</div>
+</div>
+<div class="px-5 py-3 bg-[#111827]/50 border-t border-gray-700 flex justify-start space-x-4">
+<button class="flex items-center space-x-1 text-gray-500 hover:text-[var(--primary-blue)] transition-colors">
+<span class="material-symbols-outlined text-[18px]">favorite</span>
+<span class="text-xs">12</span>
+</button>
+<button class="flex items-center space-x-1 text-gray-500 hover:text-gray-300 transition-colors">
+<span class="material-symbols-outlined text-[18px]">chat_bubble</span>
+<span class="text-xs">0</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="relative z-10 flex justify-center mb-10">
+<span class="px-4 py-1.5 bg-gray-800 text-gray-300 text-sm font-medium rounded-full shadow-md border border-gray-700">
+            2023年 10月 20日
+        </span>
+</div>
+<div class="relative z-10 grid grid-cols-2 gap-8 mb-12">
+<div class="col-span-1 flex flex-col items-end text-right pr-8 relative group">
+<div class="absolute right-[-21px] top-6 w-3 h-3 bg-[var(--friend-pink-brand)] rounded-full border-2 border-[#111827] z-20 group-hover:scale-125 transition-transform duration-200"></div>
+<div class="w-full max-w-md bg-[#1F2937] rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-700">
+<div class="p-5">
+<div class="flex items-center justify-end mb-2 space-x-2 flex-row-reverse space-x-reverse">
+<img alt="Avatar" class="w-6 h-6 rounded-full border border-[var(--friend-pink)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiE5aaogCEH9g8xRxFJOxsrrqt22ORJHPAc6qv1zLRGLKp9OZG3cHi1KOKtEpU8RDNfgX4X2zeync9kEn33ygAb_YaK28FLj5HK17uDrd9oVPSfK2ZOjX_xk00e4ZNe07z0AhG6bWv8NJ7b_kzew9z7iuTmB79oC6bC2mmkVP2pWsNqd5sgoCilHLn2J2X3yNVbqDkdbbPYlF-4ubZ5JN2ZU5cTayh9xmVV1G6OJIvyr-evKOeDq9yJHBXUfQVo2isVSu3cjVzQQ"/>
+<span class="text-xs font-semibold text-[var(--friend-pink)] uppercase tracking-wider">13:15</span>
+</div>
+<h3 class="text-lg font-bold text-white mb-1">看展</h3>
+<p class="text-gray-400 text-sm mb-3">这幅画的光影处理太绝了。</p>
+<div class="rounded-lg overflow-hidden">
+<img alt="Art" class="w-full h-32 object-cover opacity-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBarnUsUjYpmJA2X9WiJP-3lzP4O1qU66a-F-E6myTtV84RRJIbv3VkKpi-SiBpYvQ7InqciFJpQHnERovs2xQ5OMvHtBVjwQrPXBhKfxxfYMTrzUErxL83owQmGHN7ULnOvtnenOxeE3RtWKN-a4syOOA4qE23mxp6DK6okd4cs1D0v7t-OUqtrw6mYDJUvExdEHzevYrKT_qNMPeShu2toO-dTJPBqStVynkJvAtNL3PJCBnmJTORMyqDvB93BEJaJFss_PWGWA"/>
+</div>
+</div>
+</div>
+</div>
+<div class="col-span-1 flex flex-col items-start pl-8 relative group">
+<div class="absolute left-[-21px] top-6 w-3 h-3 bg-[var(--primary-blue-brand)] rounded-full border-2 border-[#111827] z-20 group-hover:scale-125 transition-transform duration-200"></div>
+<div class="w-full max-w-md bg-[#1F2937] rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-700">
+<div class="p-5">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold text-[var(--primary-blue)] uppercase tracking-wider">13:15</span>
+</div>
+<h3 class="text-lg font-bold text-white mb-1">午休时刻</h3>
+<p class="text-gray-400 text-sm">一杯拿铁，一本好书，难得的惬意时光。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative z-10 grid grid-cols-2 gap-8 mb-12 group">
+<div class="col-span-1 flex flex-col items-end text-right pr-8 relative">
+<div class="absolute right-[-21px] top-6 w-3 h-3 bg-[var(--friend-pink-brand)] rounded-full border-2 border-[#111827] z-20 group-hover:scale-125 transition-transform duration-200"></div>
+<div class="w-full max-w-md bg-[#1F2937] rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-700">
+<div class="p-5">
+<div class="flex items-center justify-end mb-2 space-x-2 flex-row-reverse space-x-reverse">
+<img alt="Avatar" class="w-6 h-6 rounded-full border border-[var(--friend-pink)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpZB-4JzzBYy8qK_dMWY9AMWmEk4m5498K7NDx4EGccBGtaPHSzyJfwNlYJSmA1T77ByNRdr9jy4t982A2pNqsbSmIsjOSKVGyYDGMauPmpPdKcfTmhbJKKfGRflxpm9g8127i4YWmfChyaVvYO8O65n6dwQbng4xy-ompDEI8vEXWlFjnMaV6mAYbY3k3uiZY1cUTqWQLyQ5ft-16pthybig7UlVpojFf6REb9dQQ5NdDYEaiEfBP-DG5jkZcBES-tzQhIRCscg"/>
+<span class="text-xs font-semibold text-[var(--friend-pink)] uppercase tracking-wider">09:30</span>
+</div>
+<h3 class="text-lg font-bold text-white mb-2">心情随笔</h3>
+<p class="text-gray-400 text-sm italic">
+                        "生活不是等待暴风雨过去，而是学会在雨中跳舞。" 今天读到这句话，深受触动。🌧️💃
+                    </p>
+</div>
+<div class="px-5 py-2 bg-[#111827]/50 border-t border-gray-700 flex justify-end space-x-3">
+<span class="text-xs text-gray-500">来自 iPhone 14 Pro</span>
+</div>
+</div>
+</div>
+<div class="col-span-1"></div>
+</div>
+<div class="relative z-10 flex flex-col items-center mt-12 mb-8">
+<div class="w-3 h-3 bg-gray-700 rounded-full mb-3"></div>
+<p class="text-xs text-gray-500 font-medium tracking-wide">没有更多内容了</p>
+</div>
+</main>
+<button class="fixed bottom-8 right-8 bg-[var(--primary-blue-brand)] hover:bg-blue-600 text-white rounded-full p-4 shadow-lg shadow-blue-900/40 hover:shadow-blue-900/60 transition-all duration-300 z-50 flex items-center justify-center group border border-blue-500/20">
+<span class="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform duration-300">add</span>
+</button>
+
+</body></html>

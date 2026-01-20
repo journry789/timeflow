@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>好友列表 - 社交时间线</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#2463eb",
+              "background-light": "#f6f6f8",
+              "background-dark": "#111621",
+              "card-dark": "#1d2433",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "PingFang SC", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: "Plus Jakarta Sans", "PingFang SC", sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-white transition-colors duration-300">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-[1000px] mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined block text-xl">timeline</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">社交时间线</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary dark:hover:text-white transition-colors" href="#">首页</a>
+<a class="hover:text-primary dark:hover:text-white transition-colors" href="#">发现</a>
+<a class="text-primary dark:text-white border-b-2 border-primary py-5" href="#">好友</a>
+<a class="hover:text-primary dark:hover:text-white transition-colors" href="#">消息</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="size-9 rounded-full bg-cover bg-center border-2 border-primary/20" data-alt="User profile avatar circle" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAgswPjW8T1h3cTxdhN-Rh2Q67iZsFRwd-hjtkDK0XqoITkRaNvhH_c2YMUyMUdSWY-pz7zv4fz91NTkCKMQQrdJ_CDUbry6vQSnaqOi7EITFc2uUjg9H3gyg-yLKaUMO4v-_2pR-VNl0pK0v2KSzsrIzBUfODiF8Wn93KWOv9nFAe-ze-7X3L65kcAYcmFyf7yXSoE61CSfn7eq9DZC1WGMdQBb5LhI6eTvlq3AEiIBCVvfzK9LqvTSO63_T6IKBWjnX9csPZwfw');">
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-[800px] mx-auto px-6 py-8">
+<!-- Header Actions -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<h2 class="text-2xl font-bold">我的好友</h2>
+<button class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-blue-600 text-white font-bold py-2.5 px-6 rounded-lg transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-xl">person_add</span>
+<span>添加好友</span>
+</button>
+</div>
+<!-- Search Bar -->
+<div class="mb-10">
+<div class="relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="w-full h-14 pl-12 pr-4 bg-white dark:bg-card-dark border-none rounded-xl text-base shadow-sm focus:ring-2 focus:ring-primary/50 placeholder:text-slate-400 dark:placeholder:text-slate-500 transition-all" placeholder="搜索好友昵称或标签..." type="text"/>
+</div>
+</div>
+<!-- Friend List -->
+<div class="space-y-4">
+<!-- Friend Item 1 -->
+<div class="flex items-center justify-between bg-white dark:bg-card-dark p-4 rounded-xl shadow-sm hover:shadow-md transition-all border border-transparent hover:border-primary/20 group">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="size-14 rounded-full bg-cover bg-center ring-2 ring-white dark:ring-slate-800 shadow-inner" data-alt="Avatar of Alice Chen smiling" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD8quKyVON0MklcDmje1H-Z1hD8UFoqtuMcxbp7XE0H6GJIETI7FxboPpLpQxLGNyiwBZivJA-HszHniL9msp8uqE9CYlALIyWTcWEQvR7_MKJDkioroP-hBCcg15uZx9ILtnkZmUy_jv6A7WlQxBZ7Kr6ciaUnSMNXberb5gwi65g91o8S38DTIfwablAhSL1_nftbctl56cv9-H6We1HZ8Ne0HgGXlJcK7U02_0s25muxnRBSpUkKhw8q0Z6vxh8rf3knX0Qrkw');">
+</div>
+<div class="absolute bottom-0 right-0 size-3.5 bg-green-500 border-2 border-white dark:border-card-dark rounded-full"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-semibold">陈小明</span>
+<span class="text-sm text-slate-500 dark:text-slate-400 line-clamp-1">向着阳光生长，每一天都是新的开始 ☀️</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-4 h-4 rounded-sm bg-blue-500 shadow-sm" title="时间线颜色标识"></div>
+<button class="flex items-center justify-center size-10 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 transition-colors" title="合并时间线">
+<span class="material-symbols-outlined">merge_type</span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Friend Item 2 -->
+<div class="flex items-center justify-between bg-white dark:bg-card-dark p-4 rounded-xl shadow-sm hover:shadow-md transition-all border border-transparent hover:border-primary/20">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="size-14 rounded-full bg-cover bg-center ring-2 ring-white dark:ring-slate-800 shadow-inner" data-alt="Avatar of Lin Jingyi with glasses" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD7pwV2p3uauNQbZTrNVzSy08MdHZ-4Fo3w3IxqQE_Ober8YBidkD4vV_OL4Z3a6e5iw8eJGQ17ks7wZdkWGHE89QitWywMa2IOCsJzt5YmmNURjfQ2YSY8s4CsyM7KRmv8uT8odcb4Af63mXFkfTcGi6n3qMuPflA-TgiUjpwKI9ai5-J4-xhfIFwlkIUTeKIsl3vzSoo4TEIoa3OIFdyp16qXA73dq2ld-i8FiJnO6nhFjah1VdTSbD09HD2K2xqYaDW5WpuK7w');">
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-semibold">林静宜</span>
+<span class="text-sm text-slate-500 dark:text-slate-400 line-clamp-1">今日代码如诗，逻辑即美学 💻</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-4 h-4 rounded-sm bg-purple-500 shadow-sm" title="时间线颜色标识"></div>
+<button class="flex items-center justify-center size-10 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 transition-colors" title="合并时间线">
+<span class="material-symbols-outlined">merge_type</span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Friend Item 3 -->
+<div class="flex items-center justify-between bg-white dark:bg-card-dark p-4 rounded-xl shadow-sm hover:shadow-md transition-all border border-transparent hover:border-primary/20">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="size-14 rounded-full bg-cover bg-center ring-2 ring-white dark:ring-slate-800 shadow-inner" data-alt="Avatar of Zhang Wei looking at camera" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCwZG93rwVWTL_jrIdbyUfrlQKgKdD35Lqh7lnsTqyYgMJvCpun3-cmoZDhcYGuAZy6q_1KG4GpJPESTeu3bIgt2WTWYH0q10MD5wtQWRoiZoWjX70c90l8kj5yLsJzDp3-R-hBSLPJs0bS2CQGVLGGIAWmzDsr7lV1_WmyQVWopxLEVxow5TuOaZeYrekJx86sWwdUu5mdBWaYgumrbgFTPJ3zMpphQq2AMmV-WXbzq6lG6Af8XJUPru4KaB_Nar9aaKkiGw0Puw');">
+</div>
+<div class="absolute bottom-0 right-0 size-3.5 bg-slate-400 border-2 border-white dark:border-card-dark rounded-full"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-semibold">张伟</span>
+<span class="text-sm text-slate-500 dark:text-slate-400 line-clamp-1">摄影、旅行、音乐。在路上... 📷</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-4 h-4 rounded-sm bg-amber-500 shadow-sm" title="时间线颜色标识"></div>
+<button class="flex items-center justify-center size-10 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 transition-colors" title="合并时间线">
+<span class="material-symbols-outlined">merge_type</span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Friend Item 4 -->
+<div class="flex items-center justify-between bg-white dark:bg-card-dark p-4 rounded-xl shadow-sm hover:shadow-md transition-all border border-transparent hover:border-primary/20">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="size-14 rounded-full bg-cover bg-center ring-2 ring-white dark:ring-slate-800 shadow-inner" data-alt="Avatar of Emily Wang with short hair" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDmFVMZj3bjPBajdB_D-Kd_VlVqcSrCf6Nl5a2573U1y50r7FWlifqp_oQB4F5p5b_anwLwFfB29HXkwbsWo-HezhlKKARp3KBLd5YjLDn8Q3v_g7hAmBM5Ubcrixx9ofQjbX4H2zKz3P_-whfWEG63ERKRmyDHBBOKWF6DRhU3ATWF_PO9pzENs4iNZHimuG3LT3l1LJxdznFXVuIbmvgZ3N50-adlPgTzO81O7_maqA9OK46KZkdQs92Rr_AYWRRxFjzWM2XJSA');">
+</div>
+<div class="absolute bottom-0 right-0 size-3.5 bg-green-500 border-2 border-white dark:border-card-dark rounded-full"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-semibold">王悦悦</span>
+<span class="text-sm text-slate-500 dark:text-slate-400 line-clamp-1">保持好奇心，这个世界很有趣。</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-4 h-4 rounded-sm bg-rose-500 shadow-sm" title="时间线颜色标识"></div>
+<button class="flex items-center justify-center size-10 rounded-lg text-primary bg-primary/10 hover:bg-primary/20 transition-colors" title="已合并至时间线">
+<span class="material-symbols-outlined">call_merge</span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Friend Item 5 -->
+<div class="flex items-center justify-between bg-white dark:bg-card-dark p-4 rounded-xl shadow-sm hover:shadow-md transition-all border border-transparent hover:border-primary/20">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="size-14 rounded-full bg-cover bg-center ring-2 ring-white dark:ring-slate-800 shadow-inner" data-alt="Avatar of Li Na with a ponytail" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDxj2uopSUrhbVdzFLSMT1_yEwYOTqWb0yrhKycVw2Xt_h-H3Z-HoOxugZCb_NhdbqbR-m3etk3-ZG7LndkAA6n41T0TbGZgCUdrJ0Lxqu2JIqZtdyn5euxVUiv2V1FB0SpSdG4BOc7ptmM3ZQ0XIeFLaYptQSFqNiI5WRjAzjOE4I0X4om7FUpfQZSv3bC-54mn-KXBWfcD4jGVvJtaY08DqjdhWtLht-nfOBB-pevFdkG4DUld3ThE2tddTGgvQp0k-zYgHIAdA');">
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-semibold">李娜</span>
+<span class="text-sm text-slate-500 dark:text-slate-400 line-clamp-1">热爱生活的人，总会遇见温柔。</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-4 h-4 rounded-sm bg-emerald-500 shadow-sm" title="时间线颜色标识"></div>
+<button class="flex items-center justify-center size-10 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 transition-colors" title="合并时间线">
+<span class="material-symbols-outlined">merge_type</span>
+</button>
+<button class="flex items-center justify-center size-10 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Pagination or Load More -->
+<div class="mt-12 flex justify-center">
+<button class="text-sm font-semibold text-slate-400 hover:text-primary transition-colors flex items-center gap-2">
+<span>显示更多好友</span>
+<span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+</main>
+<!-- Footer Space -->
+<footer class="py-12 text-center text-slate-400 dark:text-slate-600 text-xs">
+<p>© 2024 社交时间线 - 用色彩记录生活点滴</p>
+</footer>
+</body></html>

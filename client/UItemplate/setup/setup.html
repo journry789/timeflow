@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Personal Settings</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563EB",
+                        "primary-hover": "#1d4ed8",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0f172a",
+                        "surface-dark": "#1e293b",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans SC", "sans-serif"],
+                        "body": ["Plus Jakarta Sans", "Noto Sans SC", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Plus Jakarta Sans", "Noto Sans SC", sans-serif;
+        }
+        /* Custom Scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased transition-colors duration-200">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- Left Navigation Sidebar -->
+<aside class="w-64 flex-shrink-0 border-r border-slate-200 dark:border-slate-800 bg-surface-light dark:bg-[#111622] flex flex-col justify-between hidden md:flex">
+<div class="flex flex-col gap-6 p-6">
+<!-- User Profile Summary -->
+<div class="flex items-center gap-3 mb-2">
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-12 shadow-sm ring-2 ring-slate-100 dark:ring-slate-700" data-alt="User profile avatar with soft gradient background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAGnP4vV73bFuRwH7FSYouwotjYr-RAK-wxMK8sz0NNMGj0DiqFTX9CCGcI5B6rUuQoEsO91lwivMzNllpQjfu5gLwLyRXbo3v3mnbwsRzOhh9sVDcipAv_cAhONk18yV1CMFIg5yJq2JnxMjBIB6_PeUvhw1gz0trnRMfTBWjSGGxNe_IBga_g4VfIZeTnWO__h4iTrsJIO2OnPgAkw0KyJAgpgOfn6jtUk6fc38E93hLVNcJT-ik6uw73CN8yYz0TN1DqIANHAA");'></div>
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-base font-bold leading-tight">时光记录</h1>
+<p class="text-slate-500 dark:text-[#92a4c8] text-xs font-normal">记录生活点滴</p>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:text-primary transition-colors">schedule</span>
+<span class="text-sm font-medium">时间线</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:text-primary transition-colors">explore</span>
+<span class="text-sm font-medium">探索</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:text-primary transition-colors">chat_bubble</span>
+<span class="text-sm font-medium">消息</span>
+<span class="ml-auto bg-primary text-white text-[10px] px-1.5 py-0.5 rounded-full">2</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors group" href="#">
+<span class="material-symbols-outlined text-[24px] group-hover:text-primary transition-colors">person</span>
+<span class="text-sm font-medium">个人主页</span>
+</a>
+<div class="h-px bg-slate-200 dark:bg-slate-800 my-2"></div>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary dark:text-blue-400 dark:bg-primary/20 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px] font-variation-settings-'FILL'1">settings</span>
+<span class="text-sm font-medium">设置</span>
+</a>
+</nav>
+</div>
+<div class="p-6">
+<button class="flex items-center gap-3 px-3 py-2 w-full text-slate-500 hover:text-red-500 transition-colors text-sm font-medium">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+                退出登录
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 h-full overflow-y-auto bg-background-light dark:bg-[#0f172a]">
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+<!-- Header -->
+<div class="mb-8 animate-fade-in-up">
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white tracking-tight mb-2">设置</h1>
+<p class="text-slate-500 dark:text-[#92a4c8]">管理您的账户偏好与隐私设置</p>
+</div>
+<div class="flex flex-col gap-6">
+<!-- Account Settings Group -->
+<section class="rounded-2xl bg-white dark:bg-[#1e293b] shadow-sm border border-slate-100 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-100 dark:border-slate-800/50 bg-slate-50/50 dark:bg-[#1e293b]">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">账户设置</h2>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Password Item -->
+<div class="group flex items-center justify-between p-4 sm:px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center size-10 rounded-full bg-blue-50 dark:bg-blue-500/10 text-primary dark:text-blue-400 shrink-0">
+<span class="material-symbols-outlined">lock</span>
+</div>
+<div>
+<p class="text-sm font-medium text-slate-900 dark:text-white">修改密码</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">定期更新密码以保护账户安全</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+<!-- Email Item -->
+<div class="group flex items-center justify-between p-4 sm:px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center size-10 rounded-full bg-blue-50 dark:bg-blue-500/10 text-primary dark:text-blue-400 shrink-0">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<div>
+<p class="text-sm font-medium text-slate-900 dark:text-white">绑定邮箱</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">用于登录和接收通知</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-sm text-slate-500 dark:text-slate-400">user@example.com</span>
+<span class="material-symbols-outlined text-slate-400">edit</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Privacy Settings Group -->
+<section class="rounded-2xl bg-white dark:bg-[#1e293b] shadow-sm border border-slate-100 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-100 dark:border-slate-800/50 bg-slate-50/50 dark:bg-[#1e293b]">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">隐私设置</h2>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- Timeline Visibility -->
+<div class="group flex items-center justify-between p-4 sm:px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center size-10 rounded-full bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 shrink-0">
+<span class="material-symbols-outlined">visibility</span>
+</div>
+<div>
+<p class="text-sm font-medium text-slate-900 dark:text-white">时间线可见性</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">控制谁可以查看您的动态</p>
+</div>
+</div>
+<select class="bg-slate-50 dark:bg-slate-800 border-none text-sm text-slate-700 dark:text-slate-300 rounded-lg focus:ring-2 focus:ring-primary py-1.5 pl-3 pr-8 cursor-pointer">
+<option>仅好友</option>
+<option>公开</option>
+<option>私密</option>
+</select>
+</div>
+<!-- Friend Requests Toggle -->
+<div class="group flex items-center justify-between p-4 sm:px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center size-10 rounded-full bg-purple-50 dark:bg-purple-500/10 text-purple-600 dark:text-purple-400 shrink-0">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+<div>
+<p class="text-sm font-medium text-slate-900 dark:text-white">允许好友请求</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">允许通过搜索找到您</p>
+</div>
+</div>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Notification Settings Group -->
+<section class="rounded-2xl bg-white dark:bg-[#1e293b] shadow-sm border border-slate-100 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-100 dark:border-slate-800/50 bg-slate-50/50 dark:bg-[#1e293b]">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">通知设置</h2>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<!-- New Events Toggle -->
+<div class="group flex items-center justify-between p-4 sm:px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center size-10 rounded-full bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 shrink-0">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<div class="flex flex-col">
+<p class="text-sm font-medium text-slate-900 dark:text-white">新事件提醒</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">当有重要纪念日或活动时提醒</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Friend Activity Toggle -->
+<div class="group flex items-center justify-between p-4 sm:px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center size-10 rounded-full bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 shrink-0">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div>
+<p class="text-sm font-medium text-slate-900 dark:text-white">好友动态通知</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">接收好友更新状态的通知</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- About Settings Group -->
+<section class="rounded-2xl bg-white dark:bg-[#1e293b] shadow-sm border border-slate-100 dark:border-slate-800 overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-100 dark:border-slate-800/50 bg-slate-50/50 dark:bg-[#1e293b]">
+<h2 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">关于我们</h2>
+</div>
+<div class="divide-y divide-slate-100 dark:divide-slate-800">
+<div class="group flex items-center justify-between p-4 sm:px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center size-10 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 shrink-0">
+<span class="material-symbols-outlined">info</span>
+</div>
+<p class="text-sm font-medium text-slate-900 dark:text-white">版本信息</p>
+</div>
+<span class="text-sm text-slate-500 font-mono">v2.4.0</span>
+</div>
+<div class="group flex items-center justify-between p-4 sm:px-6 hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center size-10 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 shrink-0">
+<span class="material-symbols-outlined">description</span>
+</div>
+<p class="text-sm font-medium text-slate-900 dark:text-white">服务条款</p>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Logout Button -->
+<div class="pt-6 pb-12">
+<button class="w-full flex items-center justify-center gap-2 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-[#1e293b] p-4 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 hover:border-red-200 dark:hover:border-red-900/30 transition-all shadow-sm font-medium">
+<span class="material-symbols-outlined">logout</span>
+                        退出登录
+                    </button>
+<p class="text-center text-xs text-slate-400 mt-6">© 2024 时光记录 App. All rights reserved.</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Personal Timeline</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563EB",
+                        "primary-hover": "#1d4ed8",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0f172a",
+                        "surface-dark": "#1e293b",
+                        "surface-light": "#ffffff",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "Noto Sans SC", "sans-serif"],
+                        "body": ["Plus Jakarta Sans", "Noto Sans SC", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Plus Jakarta Sans", "Noto Sans SC", sans-serif;
+        }::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased transition-colors duration-200">
+<div class="flex h-screen w-full overflow-hidden">
+<main class="flex-1 h-full flex flex-col relative">
+<header class="w-full bg-surface-light/80 dark:bg-surface-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 z-50 sticky top-0">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="bg-primary text-white rounded-lg p-1.5">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</div>
+<h1 class="font-bold text-lg tracking-tight text-slate-800 dark:text-white">TimeFlow</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="flex items-center gap-2 text-primary font-medium border-b-2 border-primary py-5" href="#">
+<span class="material-symbols-outlined text-[20px] font-variation-settings-'FILL'1">timeline</span>
+<span>我的时间线</span>
+</a>
+<a class="flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors py-5" href="#">
+<span class="material-symbols-outlined text-[20px]">group</span>
+<span>好友</span>
+</a>
+<a class="flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors py-5" href="#">
+<span class="material-symbols-outlined text-[20px]">call_merge</span>
+<span>合并</span>
+</a>
+<a class="flex items-center gap-2 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-colors py-5" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span>设置</span>
+</a>
+</nav>
+<div class="flex items-center gap-3">
+<div class="md:hidden flex items-center">
+<button class="p-2 text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-8 cursor-pointer ring-2 ring-transparent hover:ring-primary/50 transition-all" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAGnP4vV73bFuRwH7FSYouwotjYr-RAK-wxMK8sz0NNMGj0DiqFTX9CCGcI5B6rUuQoEsO91lwivMzNllpQjfu5gLwLyRXbo3v3mnbwsRzOhh9sVDcipAv_cAhONk18yV1CMFIg5yJq2JnxMjBIB6_PeUvhw1gz0trnRMfTBWjSGGxNe_IBga_g4VfIZeTnWO__h4iTrsJIO2OnPgAkw0KyJAgpgOfn6jtUk6fc38E93hLVNcJT-ik6uw73CN8yYz0TN1DqIANHAA");'></div>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto relative bg-background-light dark:bg-[#0f172a]">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 relative min-h-full">
+<div class="relative w-full flex justify-center z-20 mb-12">
+<div class="bg-white dark:bg-surface-dark w-full max-w-xl rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden group hover:shadow-lg hover:border-blue-200 dark:hover:border-blue-800 transition-all duration-300">
+<div class="p-5 flex items-center justify-between cursor-pointer bg-slate-50/50 dark:bg-slate-800/50">
+<div class="flex items-center gap-5">
+<div class="bg-primary/10 dark:bg-primary/20 text-primary rounded-xl p-3 flex flex-col items-center justify-center min-w-[4rem] shadow-sm">
+<span class="text-[10px] font-bold uppercase tracking-wider opacity-80">10月</span>
+<span class="text-2xl font-bold leading-none">24</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1.5 flex-wrap">
+<span class="text-[11px] font-bold uppercase tracking-wide px-2 py-0.5 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">每日摘要</span>
+<span class="text-xs text-slate-500 dark:text-slate-400 font-medium flex items-center gap-1">
+<span class="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600"></span>
+                                            5 个事件
+                                        </span>
+<span class="text-xs text-slate-500 dark:text-slate-400 font-medium flex items-center gap-1.5 ml-1 pl-2 border-l border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-[16px] text-amber-500 font-variation-settings-'FILL'1">sentiment_satisfied</span>
+<span class="text-slate-600 dark:text-slate-300">开心</span>
+</span>
+</div>
+<h3 class="font-bold text-slate-800 dark:text-white text-base">✨ 充实的一天，完成了徒步计划</h3>
+</div>
+</div>
+<button class="size-9 rounded-full flex items-center justify-center bg-white dark:bg-slate-700 shadow-sm border border-slate-100 dark:border-slate-600 group-hover:bg-primary group-hover:text-white group-hover:border-primary text-slate-400 transition-all duration-300">
+<span class="material-symbols-outlined transition-transform duration-300 group-hover:rotate-180">expand_more</span>
+</button>
+</div>
+<div class="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out">
+<div class="overflow-hidden">
+<div class="px-5 pb-5 pt-0 border-t border-slate-100 dark:border-slate-700 bg-white dark:bg-surface-dark">
+<div class="pt-4 flex flex-col gap-4">
+<div class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-800/50 p-2 rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-amber-500">sentiment_satisfied</span>
+<span class="font-medium">今日心情:</span>
+<span class="text-sm text-slate-700 dark:text-slate-200 font-semibold">🤩 活力满满</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute left-1/2 top-0 bottom-0 w-[2px] bg-slate-200 dark:bg-slate-700 transform -translate-x-1/2 z-0"></div>
+<div class="relative w-full flex justify-between mb-8 px-10 opacity-50 pointer-events-none select-none">
+<div class="w-1/2 text-right pr-12 text-xs font-bold uppercase tracking-widest text-slate-400">未完成计划</div>
+<div class="w-1/2 text-left pl-12 text-xs font-bold uppercase tracking-widest text-slate-400">记录</div>
+</div>
+<div class="space-y-4 pb-24">
+<div class="relative w-full flex items-center justify-between group">
+<div class="w-1/2 pr-6 md:pr-10 flex justify-end">
+<div class="bg-white dark:bg-surface-dark w-full max-w-[18rem] rounded-xl shadow-sm border-l-4 border-indigo-500 hover:shadow-lg transition-all duration-300 relative overflow-hidden group/card hover:-translate-y-1">
+<div class="p-3">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-indigo-500 dark:text-indigo-400 mb-0.5">09:00</span>
+<h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm">完成 Q4 季度报告</h3>
+</div>
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-500">
+<span class="material-symbols-outlined text-[16px]">hourglass_top</span>
+</div>
+</div>
+<div class="grid grid-rows-[0fr] group-hover/card:grid-rows-[1fr] transition-[grid-template-rows] duration-300">
+<div class="overflow-hidden">
+<div class="pt-2 mt-2 border-t border-slate-100 dark:border-slate-700">
+<div class="flex items-center gap-1 text-[10px] text-slate-400">
+<span class="material-symbols-outlined text-[12px]">calendar_today</span>
+<span>2023年 10月 24日</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-indigo-500 rounded-full border-2 border-white dark:border-slate-800 z-10 shadow-sm transition-transform group-hover:scale-125"></div>
+<div class="w-1/2 pl-6 md:pl-10"></div>
+</div>
+<div class="relative w-full flex items-center justify-between group">
+<div class="w-1/2 pr-6 md:pr-10"></div>
+<div class="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-emerald-500 rounded-full border-2 border-white dark:border-slate-800 z-10 shadow-sm transition-transform group-hover:scale-125"></div>
+<div class="w-1/2 pl-6 md:pl-10 flex justify-start">
+<div class="bg-white dark:bg-surface-dark w-full max-w-[18rem] rounded-xl shadow-sm border-l-4 border-emerald-500 hover:shadow-lg transition-all duration-300 relative overflow-hidden group/card hover:-translate-y-1">
+<div class="p-3">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 mb-0.5">14:00</span>
+<h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm">秋日森林徒步</h3>
+</div>
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-50 dark:bg-emerald-900/30 text-emerald-500">
+<span class="material-symbols-outlined text-[16px]">forest</span>
+</div>
+</div>
+<div class="grid grid-rows-[0fr] group-hover/card:grid-rows-[1fr] transition-[grid-template-rows] duration-300">
+<div class="overflow-hidden">
+<div class="pt-2 mt-2 border-t border-slate-100 dark:border-slate-700">
+<div class="flex items-center gap-1 text-[10px] text-slate-400 mb-2">
+<span class="material-symbols-outlined text-[12px]">calendar_today</span>
+<span>2023年 10月 24日</span>
+</div>
+<div class="h-24 w-full bg-cover bg-center rounded-lg shadow-inner" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuApyFha9SMk5nsPMriQFstB0JGnGN83w5CxmOI_fdRTtpDYLldqYBA1SL-WPs7DVbSBDQWpSkGKaIcgW_haZClJeHOe1cBI7AUvkoUFXireIjQ3ItHN878f0x7PUBYOWHSgmp6ASRA1LySSJ82wqc8xeN9HEzJObIMM_SGDXZrLqqcIlj4j8tRiR4BEPZ49tADlzt8VcEqvjJLdvZ0FGLdNDDWSh8PspQnbtBDGgobb-KcYh1H7CHz8E2nJW1jZrp_NwaInFUi6iQ");'></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative w-full flex items-center justify-between group">
+<div class="w-1/2 pr-6 md:pr-10 flex justify-end">
+<div class="bg-white dark:bg-surface-dark w-full max-w-[18rem] rounded-xl shadow-sm border-l-4 border-blue-500 hover:shadow-lg transition-all duration-300 relative overflow-hidden group/card hover:-translate-y-1">
+<div class="p-3">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-blue-500 dark:text-blue-400 mb-0.5">16:30</span>
+<h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm">预约牙医复查</h3>
+</div>
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-500">
+<span class="material-symbols-outlined text-[16px]">medical_services</span>
+</div>
+</div>
+<div class="grid grid-rows-[0fr] group-hover/card:grid-rows-[1fr] transition-[grid-template-rows] duration-300">
+<div class="overflow-hidden">
+<div class="pt-2 mt-2 border-t border-slate-100 dark:border-slate-700">
+<div class="flex items-center gap-1 text-[10px] text-slate-400">
+<span class="material-symbols-outlined text-[12px]">calendar_today</span>
+<span>2023年 10月 24日</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-blue-500 rounded-full border-2 border-white dark:border-slate-800 z-10 shadow-sm transition-transform group-hover:scale-125"></div>
+<div class="w-1/2 pl-6 md:pl-10"></div>
+</div>
+<div class="relative w-full flex items-center justify-between group">
+<div class="w-1/2 pr-6 md:pr-10"></div>
+<div class="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-amber-500 rounded-full border-2 border-white dark:border-slate-800 z-10 shadow-sm transition-transform group-hover:scale-125"></div>
+<div class="w-1/2 pl-6 md:pl-10 flex justify-start">
+<div class="bg-white dark:bg-surface-dark w-full max-w-[18rem] rounded-xl shadow-sm border-l-4 border-amber-500 hover:shadow-lg transition-all duration-300 relative overflow-hidden group/card hover:-translate-y-1">
+<div class="p-3">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-amber-600 dark:text-amber-400 mb-0.5">18:30</span>
+<h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm">家庭聚会</h3>
+</div>
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-amber-50 dark:bg-amber-900/30 text-amber-500">
+<span class="material-symbols-outlined text-[16px]">restaurant</span>
+</div>
+</div>
+<div class="grid grid-rows-[0fr] group-hover/card:grid-rows-[1fr] transition-[grid-template-rows] duration-300">
+<div class="overflow-hidden">
+<div class="pt-2 mt-2 border-t border-slate-100 dark:border-slate-700">
+<div class="flex items-center gap-1 text-[10px] text-slate-400 mb-2">
+<span class="material-symbols-outlined text-[12px]">calendar_today</span>
+<span>2023年 10月 24日</span>
+</div>
+<div class="h-24 w-full bg-cover bg-center rounded-lg shadow-inner" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCTV8GWfNfY5wlBb-_GV4SqhdQOLH1cxm3KTRXcaU4WagZUGToStClJaTrWFCFkVszDue9WLJH_DsRlUuuSqD_x4ihMPmAO9zkN65WyH4yzcN0QXS8EgXBF-1KzVBliRFg4PVTvOoJu7Az7X9IwEfe88Vm7M3T2zmo0nJxQduBtii4vjl9CiSEt44gMLGFtpw1fH_KE8hWYjA0BtV--pTCv6g3vqP5P7CTXXbvJcm-2IFPGfWlZC1rTA52Try_bNAzcMCh2ReBaUg");'></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative w-full flex items-center justify-between group">
+<div class="w-1/2 pr-6 md:pr-10"></div>
+<div class="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-purple-500 rounded-full border-2 border-white dark:border-slate-800 z-10 shadow-sm transition-transform group-hover:scale-125"></div>
+<div class="w-1/2 pl-6 md:pl-10 flex justify-start">
+<div class="bg-white dark:bg-surface-dark w-full max-w-[18rem] rounded-xl shadow-sm border-l-4 border-purple-500 hover:shadow-lg transition-all duration-300 relative overflow-hidden group/card hover:-translate-y-1">
+<div class="p-3">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-purple-600 dark:text-purple-400 mb-0.5">20:00</span>
+<h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm">海边露营回忆</h3>
+</div>
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-purple-50 dark:bg-purple-900/30 text-purple-500">
+<span class="material-symbols-outlined text-[16px]">waves</span>
+</div>
+</div>
+<div class="grid grid-rows-[0fr] group-hover/card:grid-rows-[1fr] transition-[grid-template-rows] duration-300">
+<div class="overflow-hidden">
+<div class="pt-2 mt-2 border-t border-slate-100 dark:border-slate-700">
+<div class="flex items-center gap-1 text-[10px] text-slate-400 mb-2">
+<span class="material-symbols-outlined text-[12px]">calendar_today</span>
+<span>2023年 6月 18日</span>
+</div>
+<div class="h-24 w-full bg-cover bg-center rounded-lg shadow-inner" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD-jHLfFPGdNIVIqxgcBowEDmvdMf_9FY3qkH4sf-SH2UBFvpFj6_WCZw4EeElOsECqeKXS95G9p_8ZDdVCEJ65spZWIg-ODWL6UAEiIQ2LXM5HEi_--gFpXcxLN6Re7VGw550rKQG9YrHfzsGdAG_fM4RKr3Jp2JKYMA-Q7FHYMkwY13plJpidp0EDwGmfon4F8TCV6o0p4q3HVMFe3_ANjFi1qQcVc9UfzlahKQzA_pBkGaQQaJpbuqseSRzu_RgkO9tjK-bFrQ");'></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="relative w-full flex items-center justify-between group">
+<div class="w-1/2 pr-6 md:pr-10 flex justify-end">
+<div class="bg-white dark:bg-surface-dark w-full max-w-[18rem] rounded-xl shadow-sm border-l-4 border-rose-400 hover:shadow-lg transition-all duration-300 relative overflow-hidden group/card hover:-translate-y-1">
+<div class="p-3">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="text-xs font-bold text-rose-500 dark:text-rose-400 mb-0.5">22:00</span>
+<h3 class="font-bold text-slate-800 dark:text-slate-100 text-sm">阅读：设计心理学</h3>
+</div>
+<div class="flex items-center justify-center w-6 h-6 rounded-full bg-rose-50 dark:bg-rose-900/30 text-rose-500">
+<span class="material-symbols-outlined text-[16px]">menu_book</span>
+</div>
+</div>
+<div class="grid grid-rows-[0fr] group-hover/card:grid-rows-[1fr] transition-[grid-template-rows] duration-300">
+<div class="overflow-hidden">
+<div class="pt-2 mt-2 border-t border-slate-100 dark:border-slate-700">
+<div class="flex items-center gap-1 text-[10px] text-slate-400">
+<span class="material-symbols-outlined text-[12px]">calendar_today</span>
+<span>2023年 10月 24日</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute left-1/2 -translate-x-1/2 w-3 h-3 bg-rose-400 rounded-full border-2 border-white dark:border-slate-800 z-10 shadow-sm transition-transform group-hover:scale-125"></div>
+<div class="w-1/2 pl-6 md:pl-10"></div>
+</div>
+</div>
+</div>
+<div class="fixed bottom-8 right-8 z-50">
+<button class="bg-primary hover:bg-primary-hover text-white rounded-full p-4 shadow-lg hover:shadow-primary/40 transition-all active:scale-95 flex items-center justify-center group">
+<span class="material-symbols-outlined text-[28px] group-hover:rotate-90 transition-transform duration-300">add</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>
