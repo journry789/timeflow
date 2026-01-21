@@ -257,6 +257,7 @@ import type { Event } from '@/types/api'
 import { useEventStore } from '@/stores/event'
 import { useToast } from 'vue-toastification'
 import { compressImage, shouldCompress } from '@/composables/useImageCompress'
+import { getImageUrl } from '@/utils/imageUtils'
 
 interface Props {
   show: boolean
@@ -312,18 +313,6 @@ const moodDescriptions: { [key: string]: string } = {
 // 获取心情说明
 const getMoodDescription = (mood: string): string => {
   return moodDescriptions[mood] || mood
-}
-
-// 获取完整图片 URL
-const getImageUrl = (imagePath?: string | null): string | null => {
-  if (!imagePath) return null
-  // 如果已经是完整 URL，直接返回
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
-    return imagePath
-  }
-  // 如果是相对路径（如 /uploads/xxx.jpg），拼接 API URL
-  const apiUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
-  return `${apiUrl}${imagePath}`
 }
 
 // 初始化表单数据

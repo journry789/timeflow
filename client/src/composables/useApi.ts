@@ -9,8 +9,23 @@ const toast = useToast()
  * 创建 axios 实例
  */
 function createAxiosInstance(): AxiosInstance {
+  // API 基础 URL 配置
+  // 开发环境：使用 Vite 代理，通过相对路径 /api
+  // 生产环境：直接使用环境变量 VITE_API_BASE_URL 配置的后端地址
+  // 如果未设置环境变量，开发环境使用相对路径 /api，生产环境需要设置环境变量
+  let baseURL: string
+  
+  if (import.meta.env.DEV) {
+    // 开发环境：使用相对路径，通过 Vite 代理转发
+    baseURL = '/api'
+  } else {
+    // 生产环境：使用环境变量配置的后端地址
+    // 注意：如果没有设置环境变量，会回退到相对路径（需要配合反向代理）
+    baseURL = import.meta.env.VITE_API_BASE_URL || '/api'
+  }
+  
   const instance = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000',
+    baseURL,
     timeout: 10000,
     headers: {
       'Content-Type': 'application/json'

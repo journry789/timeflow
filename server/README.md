@@ -97,6 +97,29 @@ npm start
 
 服务器将在 `http://localhost:3000` 启动。
 
+### 5. 使用 PM2 管理（生产推荐）
+
+```bash
+# 全局安装 PM2（如未安装）
+npm install -g pm2
+
+# 使用 pm2 启动（名称可自定义）
+pm2 start server.js --name timeflow-api
+
+# 查看运行状态与日志
+pm2 status
+pm2 logs timeflow-api
+
+# 重启 / 停止 / 删除
+pm2 restart timeflow-api
+pm2 stop timeflow-api
+pm2 delete timeflow-api
+
+# 保存进程列表（重启后自动拉起）
+pm2 save
+pm2 startup    # 按提示执行生成的命令
+```
+
 ## API 文档
 
 ### 认证相关

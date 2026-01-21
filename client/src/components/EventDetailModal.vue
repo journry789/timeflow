@@ -118,6 +118,7 @@ import dayjs from 'dayjs'
 import type { Event } from '@/types/api'
 import { useEventStore } from '@/stores/event'
 import DeleteConfirmDialog from './DeleteConfirmDialog.vue'
+import { getImageUrl } from '@/utils/imageUtils'
 
 interface Props {
   show: boolean
@@ -137,16 +138,6 @@ const emit = defineEmits<{
 }>()
 
 const eventStore = useEventStore()
-
-// 获取完整图片 URL
-const getImageUrl = (imagePath?: string | null): string => {
-  if (!imagePath) return ''
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
-    return imagePath
-  }
-  const apiUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
-  return `${apiUrl}${imagePath}`
-}
 
 // 图片加载错误处理
 const handleImageError = (e: globalThis.Event) => {

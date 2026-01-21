@@ -345,7 +345,7 @@ const loadMergeData = async () => {
   
   try {
     const { get } = useApi()
-    const data = await get<MergeTimeline>(`/api/merge/${friendUsername.value}`)
+    const data = await get<MergeTimeline>(`/merge/${friendUsername.value}`)
     mergeData.value = data
   } catch (error) {
     console.error('Failed to load merge data:', error)

@@ -19,7 +19,7 @@ export const useFriendStore = defineStore('friend', () => {
 
     try {
       const { get } = useApi()
-      const response = await get<Friend[]>('/api/friends')
+      const response = await get<Friend[]>('/friends')
       friends.value = response
     } catch (err: any) {
       error.value = err.message || '获取好友列表失败'
@@ -37,7 +37,7 @@ export const useFriendStore = defineStore('friend', () => {
 
     try {
       const { post } = useApi()
-      await post('/api/friends/request', { username })
+      await post('/friends/request', { username })
       toast.success(`已向 ${username} 发送好友请求`)
     } catch (err: any) {
       throw err
@@ -53,7 +53,7 @@ export const useFriendStore = defineStore('friend', () => {
 
     try {
       const { get } = useApi()
-      const response = await get<Friendship[]>('/api/friends/requests')
+      const response = await get<Friendship[]>('/friends/requests')
       pendingRequests.value = response
     } catch (err: any) {
       error.value = err.message || '获取好友请求失败'
@@ -71,7 +71,7 @@ export const useFriendStore = defineStore('friend', () => {
 
     try {
       const { post } = useApi()
-      const response = await post<Friendship>('/api/friends/accept', { friendshipId })
+      const response = await post<Friendship>('/friends/accept', { friendshipId })
       
       toast.success('好友请求已接受')
       
@@ -95,7 +95,7 @@ export const useFriendStore = defineStore('friend', () => {
 
     try {
       const { post } = useApi()
-      await post('/api/friends/reject', { friendshipId })
+      await post('/friends/reject', { friendshipId })
       
       toast.success('好友请求已拒绝')
       
@@ -128,7 +128,7 @@ export const useFriendStore = defineStore('friend', () => {
 
     try {
       const { delete: del } = useApi()
-      await del(`/api/friends/${username}`)
+      await del(`/friends/${username}`)
       
       toast.success('好友已删除')
       
@@ -147,7 +147,7 @@ export const useFriendStore = defineStore('friend', () => {
 
     try {
       const { delete: del } = useApi()
-      await del(`/api/friends/request/${friendshipId}`)
+      await del(`/friends/request/${friendshipId}`)
       
       toast.success('请求已删除')
       

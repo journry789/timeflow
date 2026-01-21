@@ -38,7 +38,7 @@ export const useAuthStore = defineStore(
       const toast = useToast()
 
       try {
-        const response = await post<AuthResponse>('/api/auth/login', data)
+        const response = await post<AuthResponse>('/auth/login', data)
         
         token.value = response.token
         user.value = response.user
@@ -64,7 +64,7 @@ export const useAuthStore = defineStore(
       const toast = useToast()
 
       try {
-        const response = await post<AuthResponse>('/api/auth/register', data)
+        const response = await post<AuthResponse>('/auth/register', data)
         
         token.value = response.token
         user.value = response.user
@@ -99,7 +99,7 @@ export const useAuthStore = defineStore(
       const { get } = useApi()
 
       try {
-        const response = await get<User>('/api/users/me')
+        const response = await get<User>('/users/me')
         user.value = response
       } catch (error) {
         // 如果获取失败，清除 token
@@ -114,7 +114,7 @@ export const useAuthStore = defineStore(
       const { put } = useApi()
 
       try {
-        const response = await put<any>('/api/users/me', formData)
+        const response = await put<any>('/users/me', formData)
         
         // 更新本地用户信息（后端返回的字段名可能是 snake_case 或 camelCase）
         user.value = {

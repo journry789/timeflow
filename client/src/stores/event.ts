@@ -38,7 +38,7 @@ export const useEventStore = defineStore('event', () => {
 
     try {
       const { get } = useApi()
-      const response = await get<Event[]>('/api/events')
+      const response = await get<Event[]>('/events')
       events.value = response
     } catch (err: any) {
       error.value = err.message || '获取事件列表失败'
@@ -54,7 +54,7 @@ export const useEventStore = defineStore('event', () => {
   const fetchEventById = async (id: string) => {
     try {
       const { get } = useApi()
-      return await get<Event>(`/api/events/${id}`)
+      return await get<Event>(`/events/${id}`)
     } catch (err) {
       throw err
     }
@@ -84,10 +84,10 @@ export const useEventStore = defineStore('event', () => {
         }
         formData.append('image', file)
 
-        newEvent = await post<Event>('/api/events', formData)
+        newEvent = await post<Event>('/events', formData)
       } else {
         // 没有文件，使用 JSON
-        newEvent = await post<Event>('/api/events', {
+        newEvent = await post<Event>('/events', {
           event_date: data.event_date,
           title: data.title,
           content: data.content,
@@ -142,14 +142,14 @@ export const useEventStore = defineStore('event', () => {
           formData.append('remove_image', 'true')
         }
 
-        updatedEvent = await put<Event>(`/api/events/${id}`, formData, {
+        updatedEvent = await put<Event>(`/events/${id}`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         })
       } else {
         // 没有文件，使用 JSON
-        updatedEvent = await put<Event>(`/api/events/${id}`, data)
+        updatedEvent = await put<Event>(`/events/${id}`, data)
       }
 
       // 更新列表中的事件
@@ -173,7 +173,7 @@ export const useEventStore = defineStore('event', () => {
 
     try {
       const { delete: del } = useApi()
-      await del(`/api/events/${id}`)
+      await del(`/events/${id}`)
 
       // 从列表中移除
       events.value = events.value.filter(e => e.id !== id)

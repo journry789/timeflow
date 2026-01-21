@@ -136,7 +136,7 @@ import dayjs from 'dayjs'
 import type { Event } from '@/types/api'
 import { useEventStore } from '@/stores/event'
 import DeleteConfirmDialog from './DeleteConfirmDialog.vue'
-import { getAvatarUrl } from '@/utils/imageUtils'
+import { getAvatarUrl, getImageUrl } from '@/utils/imageUtils'
 
 interface Props {
   event: Event
@@ -167,18 +167,6 @@ const eventStore = useEventStore()
 const showDeleteDialog = ref(false)
 const imageRef = ref<HTMLImageElement | null>(null)
 const isPortraitImage = ref(false)
-
-// 获取完整图片 URL
-const getImageUrl = (imagePath?: string | null): string => {
-  if (!imagePath) return ''
-  // 如果已经是完整 URL，直接返回
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
-    return imagePath
-  }
-  // 如果是相对路径（如 /uploads/xxx.jpg），拼接 API URL
-  const apiUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
-  return `${apiUrl}${imagePath}`
-}
 
 // 图片加载处理：检测是否为竖向图片
 const handleImageLoad = (e: globalThis.Event) => {

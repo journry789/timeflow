@@ -17,10 +17,21 @@ function buildImageUrl(req, imagePath) {
   if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
     return imagePath;
   }
-  // 构建完整 URL
+  // 构建完整 URL，兼容端口号
   const protocol = req.protocol;
-  const host = req.get('host');
-  return `${protocol}://${host}${imagePath}`;
+  // req.get('host') 已包含端口（如果有），但个别代理可能去掉端口，这里补偿一次
+  const rawHost = req.get('host') || '';
+  const [hostnameFromHost, portFromHost] = rawHost.split(':');
+  const hostname = hostnameFromHost || req.hostname || '';
+  // 如果 host 里有端口直接用；否则尝试从 socket/local 获取
+  const port =
+    portFromHost ||
+    (req.socket && req.socket.localPort) ||
+    (req.connection && req.connection.localPort) ||
+    '';
+
+  const hostWithPort = port && !hostname.includes(':') ? `${hostname}:${port}` : hostname || rawHost;
+  return `${protocol}://${hostWithPort}${imagePath}`;
 }
 
 /**

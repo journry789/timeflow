@@ -369,7 +369,7 @@ const handleSearchUsers = async () => {
   searchResults.value = []
 
   try {
-    const response = await get<User[]>(`/api/users/search?q=${encodeURIComponent(searchUserQuery.value.trim())}`)
+    const response = await get<User[]>(`/users/search?q=${encodeURIComponent(searchUserQuery.value.trim())}`)
     searchResults.value = response
   } catch (error: any) {
     toast.error(error.message || '搜索失败')
