@@ -248,13 +248,13 @@ const processFile = async (file: File) => {
   }
 }
 
-// 处理文件选择（来自弹窗内部 input）
-const handleFileSelect = async (event: Event) => {
-  const target = event.target as HTMLInputElement
-  const file = target.files?.[0]
-  if (!file) return
-  await processFile(file)
-}
+// 处理文件选择（来自弹窗内部 input）- 未使用但保留以备将来使用
+// const handleFileSelect = async (event: globalThis.Event) => {
+//   const target = event.target as HTMLInputElement
+//   const file = target.files?.[0]
+//   if (!file) return
+//   await processFile(file)
+// }
 
 // 重新选择图片
 const handleReplaceImage = () => {
@@ -275,7 +275,7 @@ const onCropperReady = () => {
 
 // 更新预览
 const updatePreview = () => {
-  if (!cropperReady.value) {
+  if (!cropperReady.value || !cropper) {
     return
   }
   
@@ -296,7 +296,7 @@ const updatePreview = () => {
 
 // 缩放控制
 const zoomIn = () => {
-  if (!cropperReady.value) {
+  if (!cropperReady.value || !cropper) {
     return
   }
   
@@ -312,7 +312,7 @@ const zoomIn = () => {
 }
 
 const zoomOut = () => {
-  if (!cropperReady.value) {
+  if (!cropperReady.value || !cropper) {
     return
   }
   
@@ -329,7 +329,7 @@ const zoomOut = () => {
 
 // 旋转控制
 const rotateLeft = () => {
-  if (!cropperReady.value) {
+  if (!cropperReady.value || !cropper) {
     return
   }
   
@@ -344,7 +344,7 @@ const rotateLeft = () => {
 }
 
 const rotateRight = () => {
-  if (!cropperReady.value) {
+  if (!cropperReady.value || !cropper) {
     return
   }
   
@@ -360,7 +360,7 @@ const rotateRight = () => {
 
 // 确认裁剪
 const handleConfirm = async () => {
-  if (!imageUrl || !cropperReady.value) {
+  if (!imageUrl || !cropperReady.value || !cropper) {
     return
   }
 

@@ -62,7 +62,7 @@
                   :src="getImageUrl(event.image_url)"
                   :alt="event.title"
                   class="w-full max-h-[500px] object-contain rounded-xl shadow-lg"
-                  @error="handleImageError"
+                  @error="(e: globalThis.Event) => handleImageError(e)"
                 />
               </div>
             </div>
@@ -149,7 +149,7 @@ const getImageUrl = (imagePath?: string | null): string => {
 }
 
 // 图片加载错误处理
-const handleImageError = (e: Event) => {
+const handleImageError = (e: globalThis.Event) => {
   const target = e.target as HTMLImageElement
   target.style.display = 'none'
 }

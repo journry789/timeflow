@@ -468,7 +468,7 @@ const scrollToEvent = (eventId: string) => {
 }
 
 // 判断卡片是否在时间轴左侧
-const isCardOnLeftSide = (event: Event, groupIndex: number, eventIndex: number): boolean => {
+const isCardOnLeftSide = (_event: Event, groupIndex: number, eventIndex: number): boolean => {
   // 根据日期组和事件索引计算全局索引（用于交替显示）
   // 计算前面所有日期组的事件总数 + 当前组内索引
   const previousEventsCount = groupedEvents.value

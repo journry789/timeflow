@@ -312,7 +312,6 @@ const toast = useToast()
 const { get } = useApi()
 
 const searchQuery = ref('')
-const sendingRequest = ref(false)
 const processingRequest = ref<string | null>(null)
 
 // Search Modal

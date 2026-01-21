@@ -245,18 +245,14 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import { useToast } from 'vue-toastification'
-import { useApi } from '@/composables/useApi'
 import { getAvatarUrl } from '@/utils/imageUtils'
 import AvatarUploadModal from '@/components/AvatarUploadModal.vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 
-const router = useRouter()
 const authStore = useAuthStore()
 const toast = useToast()
-const { put } = useApi()
 
 const loading = ref(false)
 const showPasswordSection = ref(false)
@@ -349,15 +345,15 @@ const closeAvatarUploadModal = () => {
   pendingAvatarFile.value = null
 }
 
-// 删除头像
-const removeAvatar = () => {
-  avatarFile.value = null
-  if (avatarPreview.value) {
-    URL.revokeObjectURL(avatarPreview.value)
-  }
-  avatarPreview.value = null
-  avatarError.value = false
-}
+// 删除头像 - 未使用但保留以备将来使用
+// const removeAvatar = () => {
+//   avatarFile.value = null
+//   if (avatarPreview.value) {
+//     URL.revokeObjectURL(avatarPreview.value)
+//   }
+//   avatarPreview.value = null
+//   avatarError.value = false
+// }
 
 // 处理头像加载错误
 const handleAvatarError = () => {

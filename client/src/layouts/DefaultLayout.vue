@@ -168,13 +168,11 @@ import { useRouter } from 'vue-router'
 import AvatarUploadModal from '@/components/AvatarUploadModal.vue'
 import { getAvatarUrl } from '@/utils/imageUtils'
 import { useToast } from 'vue-toastification'
-import { useApi } from '@/composables/useApi'
 
 const authStore = useAuthStore()
 const friendStore = useFriendStore()
 const router = useRouter()
 const toast = useToast()
-const { put } = useApi()
 
 const showUserMenu = ref(false)
 const isDark = ref(false)

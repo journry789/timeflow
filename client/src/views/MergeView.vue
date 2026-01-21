@@ -99,7 +99,7 @@
         <!-- Timeline Events -->
         <div v-else-if="mergedEvents.length > 0" class="space-y-12">
           <div
-            v-for="(dateGroup, dateIndex) in groupedEvents"
+            v-for="(dateGroup, _dateIndex) in groupedEvents"
             :key="dateGroup.date"
             class="relative"
           >
@@ -113,7 +113,7 @@
             <!-- Events for this date -->
             <div class="space-y-10">
               <div
-                v-for="(event, eventIndex) in dateGroup.events"
+                v-for="(event, _eventIndex) in dateGroup.events"
                 :key="event.id"
                 :id="`event-${event.id}`"
                 class="relative group scroll-mt-20"
@@ -251,10 +251,10 @@ const formatDateLabel = (date: string) => {
   return dayjs(date).format('YYYY年 M月 D日')
 }
 
-// 格式化事件时间
-const formatEventTime = (date: string) => {
-  return dayjs(date).format('M月D日 • HH:mm')
-}
+// 格式化事件时间 - 未使用但保留以备将来使用
+// const formatEventTime = (date: string) => {
+//   return dayjs(date).format('M月D日 • HH:mm')
+// }
 
 // 心情颜色（十六进制，用于时间线点）
 const moodColors: { [key: string]: string } = {
@@ -321,23 +321,23 @@ const closeDetailModal = () => {
   viewingEvent.value = null
 }
 
-// 获取完整图片 URL
-const getImageUrl = (imagePath?: string | null): string => {
-  if (!imagePath) return ''
-  // 如果已经是完整 URL，直接返回
-  if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
-    return imagePath
-  }
-  // 如果是相对路径（如 /uploads/xxx.jpg），拼接 API URL
-  const apiUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
-  return `${apiUrl}${imagePath}`
-}
+// 获取完整图片 URL - 未使用但保留以备将来使用
+// const getImageUrl = (imagePath?: string | null): string => {
+//   if (!imagePath) return ''
+//   // 如果已经是完整 URL，直接返回
+//   if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
+//     return imagePath
+//   }
+//   // 如果是相对路径（如 /uploads/xxx.jpg），拼接 API URL
+//   const apiUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
+//   return `${apiUrl}${imagePath}`
+// }
 
-// 图片加载错误处理
-const handleImageError = (e: Event) => {
-  const target = e.target as HTMLImageElement
-  target.style.display = 'none'
-}
+// 图片加载错误处理 - 未使用但保留以备将来使用
+// const handleImageError = (e: globalThis.Event) => {
+//   const target = e.target as HTMLImageElement
+//   target.style.display = 'none'
+// }
 
 // 加载合并时间线数据
 const loadMergeData = async () => {

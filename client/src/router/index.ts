@@ -46,7 +46,7 @@ const router = createRouter({
 })
 
 // 全局路由守卫
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   const authStore = useAuthStore()
   
   // 需要认证的路由

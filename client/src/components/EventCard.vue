@@ -97,8 +97,8 @@
                 ? 'h-full object-cover object-top group-hover/image:object-contain group-hover/image:h-auto' 
                 : 'h-full object-cover hover:scale-105'
             ]"
-            @load="handleImageLoad"
-            @error="handleImageError"
+            @load="(e: globalThis.Event) => handleImageLoad(e)"
+            @error="(e: globalThis.Event) => handleImageError(e)"
           />
         </div>
       </div>
@@ -131,11 +131,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import dayjs from 'dayjs'
 import type { Event } from '@/types/api'
 import { useEventStore } from '@/stores/event'
-import { useToast } from 'vue-toastification'
 import DeleteConfirmDialog from './DeleteConfirmDialog.vue'
 import { getAvatarUrl } from '@/utils/imageUtils'
 
@@ -164,7 +163,6 @@ const emit = defineEmits<{
 }>()
 
 const eventStore = useEventStore()
-const toast = useToast()
 
 const showDeleteDialog = ref(false)
 const imageRef = ref<HTMLImageElement | null>(null)
@@ -183,7 +181,7 @@ const getImageUrl = (imagePath?: string | null): string => {
 }
 
 // 图片加载处理：检测是否为竖向图片
-const handleImageLoad = (e: Event) => {
+const handleImageLoad = (e: globalThis.Event) => {
   const target = e.target as HTMLImageElement
   const naturalWidth = target.naturalWidth
   const naturalHeight = target.naturalHeight
@@ -197,7 +195,7 @@ const handleImageLoad = (e: Event) => {
 }
 
 // 图片加载错误处理
-const handleImageError = (e: Event) => {
+const handleImageError = (e: globalThis.Event) => {
   const target = e.target as HTMLImageElement
   target.style.display = 'none'
 }
@@ -212,7 +210,7 @@ const handleAvatarError = () => {
 watch(() => props.event.image_url, () => {
   isPortraitImage.value = false
   if (imageRef.value && imageRef.value.complete) {
-    handleImageLoad({ target: imageRef.value } as Event)
+    handleImageLoad({ target: imageRef.value } as unknown as globalThis.Event)
   }
 })
 
@@ -268,7 +266,7 @@ const getCardBorderStyle = () => {
   const baseStyle: Record<string, string> = {
     boxShadow: props.event.event_type === 'plan' 
       ? '0 1px 3px 0 rgba(245, 158, 11, 0.1)' 
-      : undefined
+      : 'none'
   }
   
   if (props.isLeftSide) {

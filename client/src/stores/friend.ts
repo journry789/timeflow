@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { ref } from 'vue'
 import type { Friend, Friendship } from '@/types/api'
 import { useApi } from '@/composables/useApi'
 import { useToast } from 'vue-toastification'

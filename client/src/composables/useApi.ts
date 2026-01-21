@@ -109,13 +109,13 @@ export const useApi = () => {
     /**
      * PUT 请求
      */
-    async put<T = any>(url: string, data?: any): Promise<T> {
+    async put<T = any>(url: string, data?: any, config?: any): Promise<T> {
       // 如果 data 是 FormData，删除默认的 Content-Type，让浏览器自动设置（包含 boundary）
-      const config = data instanceof FormData
-        ? { headers: { 'Content-Type': undefined } }
-        : {}
+      const requestConfig = data instanceof FormData
+        ? { ...config, headers: { ...config?.headers, 'Content-Type': undefined } }
+        : config || {}
       
-      const response = await api.put<ApiResponse<T>>(url, data, config)
+      const response = await api.put<ApiResponse<T>>(url, data, requestConfig)
       return response.data.data as T
     },
 

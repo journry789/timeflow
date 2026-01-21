@@ -144,10 +144,8 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
 import { useAuthStore } from '@/stores/auth'
-import { useToast } from 'vue-toastification'
 
 const authStore = useAuthStore()
-const toast = useToast()
 
 const isRegisterMode = ref(false)
 const showPassword = ref(false)

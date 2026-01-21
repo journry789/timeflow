@@ -198,7 +198,7 @@
                     type="file"
                     accept="image/jpeg,image/png,image/gif,image/webp"
                     class="hidden"
-                    @change="handleFileChange"
+                    @change="(e: globalThis.Event) => handleFileChange(e)"
                   />
                   <span class="material-symbols-outlined text-slate-400 group-hover:text-primary text-xl mb-0.5">add_photo_alternate</span>
                   <span class="text-[9px] text-slate-400 group-hover:text-primary font-medium">
@@ -255,7 +255,6 @@ import { ref, reactive, watch, computed, onMounted } from 'vue'
 import dayjs from 'dayjs'
 import type { Event } from '@/types/api'
 import { useEventStore } from '@/stores/event'
-import { useAuthStore } from '@/stores/auth'
 import { useToast } from 'vue-toastification'
 import { compressImage, shouldCompress } from '@/composables/useImageCompress'
 
@@ -276,7 +275,6 @@ const emit = defineEmits<{
 }>()
 
 const eventStore = useEventStore()
-const authStore = useAuthStore()
 const toast = useToast()
 
 const loading = ref(false)
@@ -389,8 +387,8 @@ onMounted(() => {
 })
 
 // 处理文件选择
-const handleFileChange = async (e: Event) => {
-  const target = e.target as HTMLInputElement
+const handleFileChange = async (e: globalThis.Event) => {
+  const target = (e.target as HTMLInputElement)
   const file = target.files?.[0]
   
   if (!file) {
