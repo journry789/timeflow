@@ -41,7 +41,17 @@ export const useAuthStore = defineStore(
         const response = await post<AuthResponse>('/auth/login', data)
         
         token.value = response.token
-        user.value = response.user
+        // 转换字段名：后端返回 camelCase，前端使用 snake_case
+        user.value = {
+          id: response.user.id,
+          email: response.user.email,
+          username: response.user.username,
+          display_name: (response.user as any).display_name || (response.user as any).displayName,
+          avatar_url: (response.user as any).avatar_url || (response.user as any).avatarUrl,
+          color: response.user.color,
+          created_at: (response.user as any).created_at || (response.user as any).createdAt,
+          updated_at: (response.user as any).updated_at || (response.user as any).updatedAt
+        }
         
         // 保存到 localStorage
         localStorage.setItem('token', response.token)
@@ -67,7 +77,17 @@ export const useAuthStore = defineStore(
         const response = await post<AuthResponse>('/auth/register', data)
         
         token.value = response.token
-        user.value = response.user
+        // 转换字段名：后端返回 camelCase，前端使用 snake_case
+        user.value = {
+          id: response.user.id,
+          email: response.user.email,
+          username: response.user.username,
+          display_name: (response.user as any).display_name || (response.user as any).displayName,
+          avatar_url: (response.user as any).avatar_url || (response.user as any).avatarUrl,
+          color: response.user.color,
+          created_at: (response.user as any).created_at || (response.user as any).createdAt,
+          updated_at: (response.user as any).updated_at || (response.user as any).updatedAt
+        }
         
         // 保存到 localStorage
         localStorage.setItem('token', response.token)
@@ -99,8 +119,18 @@ export const useAuthStore = defineStore(
       const { get } = useApi()
 
       try {
-        const response = await get<User>('/users/me')
-        user.value = response
+        // /api/users/me 返回的是 camelCase，需要转换为 snake_case 以匹配前端类型
+        const response = await get<any>('/users/me')
+        user.value = {
+          id: response.id,
+          email: response.email,
+          username: response.username,
+          display_name: response.display_name || response.displayName,
+          avatar_url: response.avatar_url || response.avatarUrl,
+          color: response.color,
+          created_at: response.created_at || response.createdAt,
+          updated_at: response.updated_at || response.updatedAt
+        }
       } catch (error) {
         // 如果获取失败，清除 token
         logout()
