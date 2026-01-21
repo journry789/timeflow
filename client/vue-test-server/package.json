@@ -1,0 +1,14 @@
+{
+  "name": "timeflow-vue-test-server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "轻量 Node 测试服务器，用于本地/内网验证已构建的 Vue 产物。",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.21.1"
+  }
+}

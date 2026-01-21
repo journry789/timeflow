@@ -10,7 +10,12 @@ export default defineConfig(({ mode }) => {
   // 从环境变量获取 API 基础 URL，默认为 http://localhost:3000
   const apiBaseUrl = env.VITE_API_BASE_URL || 'http://localhost:3000'
   
+  // 检测是否为 Electron 构建
+  const isElectron = process.env.ELECTRON_BUILD === 'true'
+  
   return {
+    // Electron 应用需要使用相对路径
+    base: isElectron ? './' : '/',
     plugins: [vue()],
     resolve: {
       alias: {
